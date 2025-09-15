@@ -5,17 +5,19 @@
 **Level**: Intermediate  
 **Database**: library_db
 
-This project demonstrates the implementation of a Library Management System using SQL. It includes creating and managing tables, performing CRUD operations, and executing advanced SQL queries. The goal is to showcase skills in database design, manipulation, and querying.
+This project is a Library Management System built with SQL to simulate how a real library tracks branches, employees, members, books, and transactions. The system covers everything from database design and CRUD operations to advanced queries, stored procedures, and reporting.
+
+The goal was to practice end-to-end database skills like designing schemas, managing relationships, automating workflows, and generating insights that support decision-making.
 
 <img width="866" height="500" alt="image" src="https://github.com/user-attachments/assets/0f74e29c-f75b-4451-a110-3d33a62ec520" />
 
 
 ****Objectives****
 ---
-1. **Set up the Library Management System Database**: Create and populate the database with tables for branches, employees, members, books, issued status, and return status.
-2. **CRUD Operations**: Perform Create, Read, Update, and Delete operations on the data.
-3. **CTAS (Create Table As Select)**: Utilize CTAS to create new tables based on query results.
-4. **Advanced SQL Queries**: Develop complex queries to analyze and retrieve specific data.
+1. **Set up the Library Management System Database**: Design and populate the database with tables for branches, employees, members, books, issued status, and return status.
+2. **CRUD Operations**: Demonstrate Create, Read, Update, and Delete operations on the records across different tables.
+3. **CTAS (Create Table As Select)**: Utilize CTAS to create new summary tables from query results to streamline reporting and analysis.
+4. **Advanced SQL Queries**: Write complex queries to uncover insights and retrieve specific data.
 
 ****Project Structure****
 ---
@@ -25,7 +27,7 @@ This project demonstrates the implementation of a Library Management System usin
 <img width="671" height="1106" alt="Screenshot 2025-09-15 at 10 30 38 AM" src="https://github.com/user-attachments/assets/2d060092-3656-40c5-95cc-03182022d87f" />
 
 
-   - **Table Creation**: Created tables for branches, employees, members, books, issued status, and return status. Each table includes relevant columns and relationships.
+   - **Table Creation**: Designed and created tables for branches, employees, members, books, issued records, and return records, each with relevant columns, constraints, and relationships.
 
 ```sql
 CREATE DATABASE library_db;
@@ -112,10 +114,10 @@ CREATE TABLE return_status
 ```
 
 **2. Crud Operations**
-- Create: Inserted sample records into the books table.
-- Read: Retrieved and displayed data from various tables.
-- Update: Updated records in the employees table.
-- Delete: Removed records from the members table as needed.
+- Create: Added sample records to the books table.  
+- Read: Queried and displayed information from multiple tables.  
+- Update: Modified employee records to reflect changes.  
+- Delete: Removed member records when no longer active or as needed.
   
 **Task 1. Create a New Book Record** -- "978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.')"
 
@@ -125,7 +127,7 @@ VALUES('978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Ha
 SELECT * FROM books;
 ```
 
-**Task 2: Update an Existing Member's Address**
+**Task 2: Update an Existing Member's Address in the table**
 ```sql
 UPDATE members
 SET member_address = '125 Oak St'
@@ -140,7 +142,7 @@ WHERE  issued_id =   'IS121';
 SELECT * FROM issued_status;
 ```
 
-**Task 4: Retrieve All Books Issued by a Specific Employee** -- Objective: Select all books issued by the employee with emp_id = 'E101'.
+**Task 4: Retrieve All Books Issued from a Specific Employee** -- Objective: Select all books issued by the employee with emp_id = 'E101'.
 ```sql
 SELECT * FROM issused_status
 WHERE issused_emp_id = "E101"
@@ -188,8 +190,7 @@ FROM members
 WHERE reg_date >= CURRENT_DATE - INTERVAL '180 days';
 ```
 
-**Task 10: List Employees with Their Branch Manager's Name and their branch details:
-**
+**Task 10: List Employees with Their Branch Manager's Name and their branch details:**
 ```sql
 SELECT 
     e1.emp_id,
@@ -203,16 +204,14 @@ JOIN branch as b ON e1.branch_id = b.branch_id
 JOIN employees as e2 ON e2.emp_id = b.manager_id;
 ```
 
-**Task 11. Create a Table of Books with Rental Price Above a Certain Threshold:
-**
+**Task 11. Create a Table of Books with Rental Price Above a Certain Threshold:**
 ```sql
 CREATE TABLE expensive_books AS
 SELECT * FROM books
 WHERE rental_price > 7.00;
 ```
 
-**Task 12: Retrieve the List of Books Not Yet Returned
-**
+**Task 12: Retrieve the List of Books Not Yet Returned**
 ``sql
 SELECT * FROM issued_status as ist
 LEFT JOIN
@@ -402,15 +401,15 @@ WHERE isbn = '978-0-375-41398-8'
 ****Reports**** 
 ---
 
-**Database Schema**: Detailed table structures and relationships.  
-**Data Analysis**: Insights into book categories, employee salaries, member registration trends, and issued books.  
-**Summary Reports**: Aggregated data on high-demand books and employee performance.
+**Database Schema**: Defined clear table structures with primary/foreign keys to capture relationships across branches, employees, members, books, and transactions.  
+**Data Analysis**: Explored trends in book categories, employee salaries, member registrations, and issued/returned books.  
+**Summary Reports**: Generated aggregated reports highlighting high-demand books and employee performance metrics.  
+
 
 ****Conclusion****
 ---
 
-This project demonstrates the application of SQL skills in creating and managing a library management system. It includes database setup, data manipulation, and advanced querying, providing a solid foundation for data management and analysis.
-
+This project highlights my ability to design and manage relational databases using SQL. By setting up the schema, performing CRUD operations, creating summary tables, and developing advanced queries, I demonstrated skills in both data management and analysis, turning raw records into actionable insights.
 
 
 
