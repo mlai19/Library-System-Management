@@ -2,7 +2,6 @@
 
 ## Project Overview  
 **Project Title**: Library Management System  
-**Level**: Intermediate  
 **Database**: library_db
 
 This project is a Library Management System built with SQL to simulate how a real library tracks branches, employees, members, books, and transactions. The system covers everything from database design and CRUD operations to advanced queries, stored procedures, and reporting.
